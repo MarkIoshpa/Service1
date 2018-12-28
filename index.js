@@ -38,14 +38,15 @@ app.get('/getAllAthletes', (req, res) =>
 
     ctrl.setNewTournament(req.params.id, tournament)
         .then((val) => {
-            if(!(val.length == 0) && !(val === undefined)) res.json(val)
-            else res.status(404).send('Not found')
+            res.json(val)
         })
         .catch((err) => {
             console.log('Error occured:', err.message)
             res.status(500).send(err.message)
         })
 })
+
+app.get('/', (req,res) => {res.redirect('https://documenter.getpostman.com/view/5696798/Rzn9ugpN')})
 
 //global route handler
 app.all('*', (req, res) => {
