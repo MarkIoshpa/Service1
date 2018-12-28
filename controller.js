@@ -34,7 +34,7 @@ module.exports.getAthletesBySportYear = function getAllAthletesBySportYear(sport
         mongoose
             .connect(MLAB_URL, options)
             .then(() => {
-                Athlete.find({'tournaments.year': {$eq: year}, 'tournaments.sport': {$eq: sport}}, {'_id':0, 'tournaments._id': 0},
+                Athlete.find({'tournaments.year': {$eq: year}, 'sport': {$eq: sport}}, {'_id':0, 'tournaments._id': 0},
                     (err, result) => {
                         if(err) reject(err)
                         mongoose.disconnect()
@@ -46,7 +46,7 @@ module.exports.getAthletesBySportYear = function getAllAthletesBySportYear(sport
     })
 }
 
-//function updates athlete with given id using the fields 'year, country, city, season, sport' in body parameter
+//function updates athlete with given id using the fields 'year, country, city, season' in body parameter
 module.exports.setNewTournament = function setNewTournament(id, body) {
     return new Promise( (resolve, reject) => {
         mongoose

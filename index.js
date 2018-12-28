@@ -32,9 +32,9 @@ app.get('/getAllAthletes', (req, res) =>
         })
  )
 
- //update athlete by adding new tournament, recieves the following tournament fields: year, country, city, season, sport
+ //update athlete by adding new tournament, recieves the following tournament fields: year, country, city, season
  app.post('/setNewTournament/:id', (req,res) => {
-    const tournament = {year = null, country = null, city = null, season = null, sport = null} = req.body
+    const tournament = {year = null, country = null, city = null, season = null} = req.body
 
     ctrl.setNewTournament(req.params.id, tournament)
         .then((val) => {
