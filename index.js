@@ -33,10 +33,10 @@ app.get('/getAllAthletes', (req, res) =>
  )
 
  //update athlete by adding new tournament, recieves the following tournament fields: year, country, city, season
- app.post('/setNewTournament/:id', (req,res) => {
+ app.post('/setNewTournament/', (req,res) => {
     const tournament = {year = null, country = null, city = null, season = null} = req.body
 
-    ctrl.setNewTournament(req.params.id, tournament)
+    ctrl.setNewTournament(req.body.id, tournament)
         .then((val) => {
             res.json(val)
         })
@@ -46,6 +46,7 @@ app.get('/getAllAthletes', (req, res) =>
         })
 })
 
+//api
 app.get('/', (req,res) => {res.redirect('https://documenter.getpostman.com/view/5696798/Rzn9ugpN')})
 
 //global route handler
